@@ -5,6 +5,39 @@ namespace FinalProject.Controllers
 {
     public class HomeController : Controller
     {
+        // Dashboard page
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
+        // Location page
+        public ActionResult Location()
+        {
+            return View();
+        }
+
+        // Profile page
+        public new ActionResult Profile()
+        {
+            return View();
+        }
+
+        // Logout page (clear session)
+        public ActionResult Logout()
+        {
+            // Clear the session or perform other logout tasks
+            Session.Clear();
+            return RedirectToAction("LoginPage", "Home"); // Redirect to login page
+        }
+
+        // Login page
+        public ActionResult LoginPage()
+        {
+            return View();
+        }
+
+        // Other actions
         public ActionResult Index()
         {
             return View();
@@ -26,18 +59,10 @@ namespace FinalProject.Controllers
         {
             return View();
         }
+    
 
-        public ActionResult LoginPage()
-        {
-            return View();
-        }
 
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
-
-        public string OneFunction()
+    public string OneFunction()
         {
             return "VALUE FROM ONE FUNCTION";
         }

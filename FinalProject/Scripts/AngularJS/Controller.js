@@ -10,6 +10,11 @@
         }
     };
 
+    // Check if user is logged in
+    $scope.isLoggedIn = function () {
+        return $scope.userInformation.length > 0;
+    };
+
     // Login Function
     $scope.loginFunc = function () {
         var user = $scope.userInformation.find(function (user) {
@@ -17,6 +22,7 @@
         });
 
         if (user) {
+            sessionStorage.setItem("currentUser", JSON.stringify(user)); // Store user in session storage
             window.location.href = "/Home/Dashboard"; // Redirect on success
         } else {
             alert("Invalid Email or Password"); // Show error on failure
@@ -59,6 +65,12 @@
         $scope.pass = '';
         $scope.uAddress = '';
         $scope.uPhone = '';
+    };
+
+    // Logout Function
+    $scope.logoutFunc = function () {
+        sessionStorage.removeItem("currentUser"); // Remove the current user from session storage
+        window.location.href = "/Home/LoginPage"; // Redirect to Login page
     };
 
     // Fetch user information from sessionStorage when the controller is initialized

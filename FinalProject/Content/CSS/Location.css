@@ -1,0 +1,44 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh; /* Ensures the body takes up the full height of the viewport */
+}
+
+.navbar {
+    width: 200px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    color: white;
+    height: 100vh; /* Makes the navbar occupy the full height of the screen */
+    position: fixed; /* Keeps it in place when scrolling */
+    top: 0;
+    left: 0;
+}
+
+    .navbar .brand {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .navbar a {
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        transition: background 0.3s;
+    }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+.container {
+    flex: 1;
+    padding: 20px;
+    margin-left: 200px; /* Prevents content from overlapping the navbar */
+}
