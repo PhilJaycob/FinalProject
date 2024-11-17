@@ -1,17 +1,25 @@
 ﻿@{
-    Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/CSS/Dashboard.css">
+
 </head>
 <body>
+    <div class="navbar">
+        <div class="brand">Growling Bidet</div>
+        <a href="~/Views/Home/Index.cshtml">Home</a>
+        <a href="~/Views/Home/Location.cshtml">Location</a>
+        <a href="~/Views/Home/Profile.cshtml">Profile</a>
+        <a href="~/Views/Home/Login.cshtml">Logout</a>
+    </div>
     <div class="container">
         <h3>Welcome to your Dashboard</h3>
         <p>Content coming soon!</p>
     </div>
 </body>
+
 </html>
