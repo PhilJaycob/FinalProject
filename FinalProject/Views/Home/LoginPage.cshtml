@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<body class="gradient-background">
+
+    <div class="valign-wrapper" style="height: 100vh;">
+        <div class="container" style="border-radius: 20px;">
+
+            <div class="row center-align">
+                <div class="col s12 m8 l6 offset-m2 offset-l3">
+                    <div class="card white" style="border-radius: 20px;">
+
+                        <div class="card-content black-text">
+
+                            <h5 class="center-align">Login</h5>
+
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                            <input id="icon_email" type="email" class="validate" ng-model="Email">
+                                            <label for="icon_email">Email</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">lock</i>
+                                            <input id="password" type="password" class="validate" ng-model="pass">
+                                            <label for="password">Password</label>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col s6">
+                                                <button class="btn orange accent-4" type="submit" name="action" ng-click="loginFunc()">
+                                                    Login
+                                                    <i class="material-icons right">send</i>
+                                                </button>
+                                            </div>
+
+                                            <div class="col s6">
+                                                <button class="btn deep-orange accent-3" type="button" name="action" ng-click="cancelFunc()">
+                                                    Cancel
+                                                    <i class="material-icons right">close</i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
