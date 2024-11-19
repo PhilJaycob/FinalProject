@@ -13,7 +13,7 @@ body {
 }
 
 .navbar {
-    background-color: #2c3e50;
+    background-color: #000; /* Changed to black */
     color: #ecf0f1;
     padding: 1rem;
     display: flex;
@@ -35,7 +35,7 @@ body {
     }
 
         .navbar a:hover {
-            color: #3498db;
+            color: #FFD700; /* Changed hover color to gold */
         }
 
 .container {
@@ -58,6 +58,31 @@ body {
         color: #7f8c8d;
     }
 
+    /* Adding button styles */
+    .container button {
+        padding: 0.8rem 1.5rem;
+        margin-top: 0.8rem; /* Reduced margin-top */
+        margin-left: 0.5rem; /* Added margin-left to reduce space between buttons */
+        background-color: #3498db;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .container button:hover {
+            background-color: #FFD700; /* Changed hover background color to gold */
+        }
+
+    /* Ensure buttons are on the right side */
+    .container .button-wrapper {
+        display: flex;
+        justify-content: flex-end; /* Align buttons to the right */
+        margin-top: 2rem;
+    }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
@@ -68,4 +93,10 @@ body {
         .navbar a {
             margin: 0.5rem 0;
         }
+
+    /* Adjust button wrapper for smaller screens */
+    .container .button-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
 }

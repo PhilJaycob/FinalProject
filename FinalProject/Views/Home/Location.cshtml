@@ -1,16 +1,15 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LocationLayout.cshtml";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Location</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="~/Content/CSS/Location.css">
-
 </head>
 <body>
     <div class="navbar">
-        <div class="brand">Growling Bidet</div>
+        <div class="brand">UST MyBidet</div>
         <a href="@Url.Action("Dashboard", "Home")">Home</a>
         <a href="@Url.Action("Location", "Home")">Location</a>
         <a href="@Url.Action("Profile", "Home")">Profile</a>
@@ -21,32 +20,32 @@
         <div id="map"></div>
     </div>
 
-    <!--
 
-     <script async
-             src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-     </script>
-     <script>
-         function initMap() {
-             // Coordinates for the location
-             const location = { lat: 40.7128, lng: -74.0060 };
 
-             // Create the map centered on the location
-             const map = new google.maps.Map(document.getElementById("map"), {
-                 zoom: 12,
-                 center: location,
-             });
+    <script async
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+    <script>
+        function initMap() {
+            // Coordinates for the location
+            const location = { lat: 40.7128, lng: -74.0060 };
 
-             // Add a marker
-             const marker = new google.maps.Marker({
-                 position: location,
-                 map: map,
-                 title: "Our Location"
-             });
-         }
-     </script>
+            // Create the map centered on the location
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: location,
+            });
 
-    -->
-    
+            // Add a marker
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: "Our Location"
+            });
+        }
+    </script>
+
 </body>
 </html>
+
+
