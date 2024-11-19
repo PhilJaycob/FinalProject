@@ -18,42 +18,42 @@
                                 <form class="col s12">
                                     <div class="row">
 
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
-                                            <input id="icon_email" type="email" class="validate" ng-model="Email">
-                                            <label for="icon_email">Email</label>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">lock</i>
-                                            <input id="password" type="password" class="validate" ng-model="pass">
-                                            <label for="password">Password</label>
-                                        </div>
-
-                                        <div class="row">
-
-                                            <div class="col s6">
-                                                <button class="btn orange accent-4" type="submit" name="action" ng-click="loginFunc()">
-                                                    Login
-                                                    <i class="material-icons right">send</i>
-                                                </button>
+                                        <div class="row" ng-init="Fetchfunc()">
+                                            <div class="input-field col s12 m12 l12">
+                                                <i class="material-icons prefix">account_circle</i>
+                                                <input id="Uname" type="text" class="validate" ng-model="Username">
+                                                <label for="Uname">Username</label>
                                             </div>
 
-                                            <div class="col s6">
-                                                <button class="btn deep-orange accent-3" type="button" name="action" ng-click="cancelFunc()">
-                                                    Cancel
-                                                    <i class="material-icons right">close</i>
-                                                </button>
+                                            <div class="input-field col s12 m12 l12" style="margin-top: 10px;">
+                                                <i class="material-icons prefix">lock_outline</i>
+                                                <input id="Upassword2" type="password" class="validate" ng-model="Upassword2">
+                                                <label for="Upassword2">Password</label>
+                                            </div>
+
+                                            <div class="col s12 m12 l12" style="margin-top: 10px;">
+                                                <div class="col s12 m6 l6">
+                                                    <button class="btn waves-effect waves-light col s12 m12 l12 green" ng-click="Loginvalidation()" style="font-size: 14px; font-weight: 500; border-radius: 20px;">
+                                                        SIGN IN
+                                                        <i class="material-icons left">send</i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="col s12 m6 l6">
+                                                    <button class="btn waves-effect waves-light col s12 m12 l12 red" ng-click="Cancelfunc()" style="font-size: 14px; font-weight: 500; border-radius: 20px;">
+                                                        CANCEL
+                                                        <i class="material-icons left">cancel</i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-
-                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
+

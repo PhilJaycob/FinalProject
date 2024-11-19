@@ -1,23 +1,31 @@
 ﻿@{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="~/Content/CSS/Dashboard.css">
 </head>
 <body>
     <div class="navbar">
         <div class="brand">Growling Bidet</div>
-        <a href="@Url.Action("Dashboard", "Home")">Home</a>
-        <a href="@Url.Action("Location", "Home")">Location</a>
-        <a href="@Url.Action("Profile", "Home")">Profile</a>
-        <a href="@Url.Action("Logout", "Home")">Logout</a>
+        <nav>
+            <a href="@Url.Action("Dashboard", "Home")">Home</a>
+            <a href="@Url.Action("Location", "Home")">Location</a>
+            <a href="@Url.Action("Profile", "Home")">Profile</a>
+            <a href="@Url.Action("Logout", "Home")">Logout</a>
+        </nav>
     </div>
-    <div class="container">
-        <h3>Welcome to your Dashboard</h3>
-        <p>Content coming soon!</p>
-    </div>
+    
+
+     <div class="container">
+         <h3>Welcome to your Dashboard</h3>
+         <p>Content coming soon!</p>
+     </div>
+
+    
 </body>
 </html>

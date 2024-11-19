@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
 }
-
 <body class="background" ng-app="FinalProject" ng-controller="FinalProjectController">
 
     <div class="valign-wrapper" style="min-height: 100vh;">
@@ -12,91 +11,131 @@
                         <div class="card-content white-text">
                             <div class="row">
 
-                                <!-- Image and Sign Up Text beside each other, centered -->
-                                <div class="col s12 header-section">
-                                    <h4 class="black-text">Sign Up</h4>
-                                    <p class="grey-text text-darken-1">Create your account below.</p>
-                                </div>
-
-                                <!-- Registration Form -->
-                                <form name="registrationForm" class="col s12" novalidate ng-submit="submitForm(registrationForm)">
-
-                                    <!-- First, Middle, and Last Name -->
+                                <form class="col s12" ng-submit="Arraystorage()">
                                     <div class="row">
-                                        <div class="input-field col s12 m4">
-                                            <i class="material-icons orange-text accent-4 prefix">account_circle</i>
-                                            <input id="firstName" type="text" class="validate" ng-model="fName" name="firstName" required ng-maxlength="30">
-                                            <label for="firstName">First Name</label>
-                                            <span ng-show="registrationForm.firstName.$touched && registrationForm.firstName.$error.required" class="red-text">First Name is required.</span>
-                                            <span ng-show="registrationForm.firstName.$touched && registrationForm.firstName.$error.maxlength" class="red-text">First Name must not exceed 30 characters.</span>
+                                        <div class="input-field col s5">
+                                            <i class="material-icons prefix" style="font-size: 22px; margin-left: 10px;">account_circle</i>
+                                            <input id="Fname" type="text" class="validate" ng-model="Fname" required>
+                                            <label for="Fname" style="font-size: 12px;">First Name</label>
                                         </div>
-                                        <div class="input-field col s12 m4">
-                                            <i class="material-icons orange-text accent-4 prefix"></i>
-                                            <input id="middleName" type="text" class="validate" ng-model="mName" name="middleName" ng-maxlength="30">
-                                            <label for="middleName">Middle Name</label>
-                                            <span ng-show="registrationForm.middleName.$touched && registrationForm.middleName.$error.maxlength" class="red-text">Middle Name must not exceed 30 characters.</span>
+
+                                        <div class="input-field col s3">
+                                            <input id="Mname" type="text" class="validate" ng-model="Mname">
+                                            <label for="Mname" style="font-size: 12px;">Middle Name</label>
                                         </div>
-                                        <div class="input-field col s12 m4">
-                                            <i class="material-icons orange-text accent-4 prefix"></i>
-                                            <input id="lastName" type="text" class="validate" ng-model="lName" name="lastName" required ng-maxlength="30">
-                                            <label for="lastName">Last Name</label>
-                                            <span ng-show="registrationForm.lastName.$touched && registrationForm.lastName.$error.required" class="red-text">Last Name is required.</span>
-                                            <span ng-show="registrationForm.lastName.$touched && registrationForm.lastName.$error.maxlength" class="red-text">Last Name must not exceed 30 characters.</span>
+
+                                        <div class="input-field col s4">
+                                            <input id="Lname" type="text" class="validate" ng-model="Lname" required>
+                                            <label for="Lname" style="font-size: 12px;">Last Name</label>
                                         </div>
                                     </div>
 
-                                    <!-- Email -->
                                     <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons orange-text accent-4 prefix">email</i>
-                                            <input id="email" type="email" class="validate" ng-model="Email" name="email" required>
-                                            <label for="email">Email</label>
-                                            <span ng-show="registrationForm.email.$touched && registrationForm.email.$error.required" class="red-text">Email is required.</span>
-                                            <span ng-show="registrationForm.email.$touched && registrationForm.email.$error.email" class="red-text">Invalid email format.</span>
+                                        <div class="input-field col s6">
+                                            <i class="material-icons prefix" style="font-size: 22px; margin-left: 10px;">lock_outline</i>
+                                            <input id="Upassword" type="password" class="validate" ng-model="Upassword" required>
+                                            <label for="Upassword" style="font-size: 12px;">Password</label>
+                                        </div>
+
+                                        <div class="input-field col s6">
+                                            <i class="material-icons prefix" style="font-size: 22px; margin-left: 10px;">phone</i>
+                                            <input id="Uphone" type="tel" class="validate" ng-model="Uphone" required>
+                                            <label for="Uphone" style="font-size: 12px;">Contact Number</label>
                                         </div>
                                     </div>
 
-                                    <!-- Password -->
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons orange-text accent-4 prefix">lock</i>
-                                            <input id="password" type="password" class="validate" ng-model="pass" name="password" required minlength="6">
-                                            <label for="password">Password</label>
-                                            <span ng-show="registrationForm.password.$touched && registrationForm.password.$error.required" class="red-text">Password is required.</span>
-                                            <span ng-show="registrationForm.password.$touched && registrationForm.password.$error.minlength" class="red-text">Password must be at least 6 characters long.</span>
+                                            <i class="material-icons prefix" style="font-size: 22px; margin-left: 10px;">mail_outline</i>
+                                            <input id="Uemail" type="email" class="validate" ng-model="Uemail" required>
+                                            <label for="Uemail" style="font-size: 12px;">UST Email</label>
                                         </div>
                                     </div>
 
-                                    <!-- Phone and Address -->
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons orange-text accent-4 prefix">phone</i>
-                                            <input id="phone" type="tel" class="validate" ng-model="uPhone" name="phone" ng-pattern="/^\d{11}$/" required>
-                                            <label for="phone">Phone No.</label>
-                                            <span ng-show="registrationForm.phone.$touched && registrationForm.phone.$error.required" class="red-text">Phone No. is required.</span>
-                                            <span ng-show="registrationForm.phone.$touched && registrationForm.phone.$error.pattern" class="red-text">Phone number must be 11 digits.</span>
+                                            <i class="material-icons prefix" style="font-size: 18px; margin-left: 10px;">location_city</i>
+                                            <input id="Uaddress" type="text" class="validate" ng-model="Uaddress" required>
+                                            <label for="Uaddress" style="font-size: 12px;">Address</label>
                                         </div>
                                     </div>
 
-                                    <div class="input-field col s12">
-                                        <i class="material-icons orange-text accent-4 prefix">home</i>
-                                        <input id="address" type="text" class="validate" ng-model="uAddress" name="address">
-                                        <label for="address">Address</label>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <select id="department" ng-model="UDept" name="department" class="browser-default" required>
+                                                <option value="" disabled selected>Choose your department</option>
+                                                <option value="AMV College of Accountancy">AMV College of Accountancy</option>
+                                                <option value="College of Architecture">College of Architecture</option>
+                                                <option value="Faculty of Arts and Letters">Faculty of Arts and Letters</option>
+                                                <option value="Faculty of Civil Law">Faculty of Civil Law</option>
+                                                <option value="College of Commerce and Business Administration">College of Commerce and Business Administration</option>
+                                                <option value="College of Education">College of Education</option>
+                                                <option value="Faculty of Engineering">Faculty of Engineering</option>
+                                                <option value="College of Fine Arts and Design">College of Fine Arts and Design</option>
+                                                <option value="Graduate School">Graduate School</option>
+                                                <option value="Graduate School of Law">Graduate School of Law</option>
+                                                <option value="College of Information and Computing Sciences">College of Information and Computing Sciences</option>
+                                                <option value="Faculty of Medicine and Surgery">Faculty of Medicine and Surgery</option>
+                                                <option value="Conservatory of Music">Conservatory of Music</option>
+                                                <option value="College of Nursing">College of Nursing</option>
+                                                <option value="Faculty of Pharmacy">Faculty of Pharmacy</option>
+                                                <option value="Institute of Physical Education and Athletics">Institute of Physical Education and Athletics</option>
+                                                <option value="College of Rehabilitation Sciences">College of Rehabilitation Sciences</option>
+                                                <option value="College of Science">College of Science</option>
+                                                <option value="College of Tourism and Hospitality Management">College of Tourism and Hospitality Management</option>
+                                                <option value="Faculty of Philosophy">Faculty of Philosophy</option>
+                                                <option value="Faculty of Sacred Theology">Faculty of Sacred Theology</option>
+                                                <option value="Faculty of Canon Law">Faculty of Canon Law</option>
+                                                <option value="Senior High School">Senior High School</option>
+                                                <option value="Junior High School">Junior High School</option>
+                                                <option value="Education High School">Education High School</option>
+                                            </select>
+                                            <span ng-show="registrationForm.department.$touched && registrationForm.department.$error.required" class="red-text">Department is required.</span>
+                                        </div>
                                     </div>
 
-                                    <!-- Submit and Clear -->
                                     <div class="row">
-                                        <div class="col s12 m6">
-                                            <button class="btn waves-effect waves-light orange darken-4" type="submit" ng-disabled="registrationForm.$invalid" ng-click="submitFunc()">
-                                                Submit
-                                                <i class="material-icons right">send</i>
+                                        <div class="input-field col s12">
+                                            <select id="building" ng-model="Ubldg" name="building" class="browser-default" required>
+                                                <option value="" disabled selected>Choose your building</option>
+                                                <option value="Albertus Magnus Building">Albertus Magnus Building</option>
+                                                <option value="Beato Angelico Building">Beato Angelico Building</option>
+                                                <option value="Blessed Pier Giorgio Frassati, O.P. Building">Blessed Pier Giorgio Frassati, O.P. Building</option>
+                                                <option value="Buenaventura Garcia Paredes, O.P. Building">Buenaventura Garcia Paredes, O.P. Building</option>
+                                                <option value="Central Laboratory">Central Laboratory</option>
+                                                <option value="Main Building">Main Building</option>
+                                                <option value="Roque Ruaño Building">Roque Ruaño Building</option>
+                                                <option value="St. Martin de Porres Building">St. Martin de Porres Building</option>
+                                                <option value="St. Raymund de Peñafort Building">St. Raymund de Peñafort Building</option>
+                                                <option value="Thomas Aquinas Research Complex">Thomas Aquinas Research Complex</option>
+                                                <option value="Central Seminary Building">Central Seminary Building</option>
+                                            </select>
+                                            <span ng-show="registrationForm.building.$touched && registrationForm.building.$error.required" class="red-text">Building is required.</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col s12">
+                                        <div class="col s6 offset-4">
+                                            <button type="submit" class="btn waves-effect waves-light col s12 green" style="font-size: 14px; font-weight: 600; border-radius: 20px;">
+                                                SIGN UP
+                                                <i class="material-icons left" style="font-size: 18px;">send</i>
                                             </button>
                                         </div>
-                                        <div class="col s12 m6">
-                                            <button class="btn waves-effect waves-light red" type="button" ng-click="cancelFunc()">
-                                                Clear
-                                                <i class="material-icons right">refresh</i>
+
+                                        <div class="col s6">
+                                            <button class="btn waves-effect waves-light col s12 red" ng-click="Cancelfunc()" style="font-size: 14px; font-weight: 500; border-radius: 20px;">
+                                                RESET
+                                                <i class="material-icons left" style="font-size: 18px;">cancel</i>
                                             </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s12">
+                                        <div class="col s12">
+                                            <p class="center-align" style="font-size: 14px; margin-top: 20px; color: black;">
+                                                Already have an account? <a href="/Home/LoginPage" style="color: darkred;">Login</a>
+                                            </p>
                                         </div>
                                     </div>
 
@@ -106,6 +145,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            </div>
+
+</div>
 </body>
