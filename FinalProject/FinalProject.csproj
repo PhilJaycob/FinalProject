@@ -147,6 +147,7 @@
     <Content Include="Content\CSS\Location.css" />
     <Content Include="Content\CSS\Profile.css" />
     <Content Include="Content\Images\Login_Background.jpg" />
+    <Content Include="Content\Images\UST_MyBidet.png" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
     <Content Include="favicon.ico" />
