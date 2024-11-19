@@ -146,6 +146,7 @@
     <Content Include="Content\CSS\Dashboard.css" />
     <Content Include="Content\CSS\Location.css" />
     <Content Include="Content\CSS\Profile.css" />
+    <Content Include="Content\Images\Login_Background.jpg" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
     <Content Include="favicon.ico" />
@@ -204,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
