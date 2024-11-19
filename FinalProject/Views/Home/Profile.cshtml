@@ -1,22 +1,32 @@
-﻿@{
+﻿@{ 
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
+ 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="~/Content/CSS/Profile.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/materialize.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/CSS/Profile.css")">
+
 </head>
 <body>
-    <div class="navbar">
-        <div class="brand">UST MyBidet</div>
-        <a href="@Url.Action("Dashboard", "Home")">Home</a>
-        <a href="@Url.Action("Location", "Home")">Location</a>
-        <a href="@Url.Action("Profile", "Home")">Profile</a>
-        <a href="@Url.Action("Logout", "Home")">Logout</a>
-    </div>
+    <nav>
+        <div class="nav-wrapper">
 
+            <a href="@Url.Action("Dashboard", "Home")" class="brand-logo" style="display: flex; align-items: center;">
+                <img src="@Url.Content("~/Content/Images/UST_MyBidet.png")" alt="UST MyBidet Logo" style="height: 40px; margin-right: 10px;">
+                UST MyBidet
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="@Url.Action("Dashboard", "Home")">Home</a></li>
+                <li><a href="@Url.Action("Location", "Home")">Location</a></li>
+                <li><a href="@Url.Action("Profile", "Home")">Profile</a></li>
+                <li><a href="@Url.Action("Logout", "Home")">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script src="@Url.Content("~/Scripts/materialize.js")"></script>
 </body>
 </html>
-
-
