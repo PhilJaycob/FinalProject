@@ -13,25 +13,45 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../Content/Images/Registration_background.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, #000000, #434343); 
 }
 
 .container {
-    max-width: 700px;
-    width: 100%;
-    background-color: #fff;
-    padding: 25px 30px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-    .container .title {
+.left-image {
+    flex: 1; 
+    background-color: #000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .left-image img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover; 
+    }
+
+.right-content {
+    flex: 2;
+    padding: 20px;
+}
+
+    .right-content .title {
         font-size: 25px;
         font-weight: 500;
         position: relative;
     }
 
-        .container .title::before {
+        .right-content .title::before {
             content: "";
             position: absolute;
             left: 0;
@@ -51,7 +71,7 @@ body {
 
 form .user-details .input-box {
     margin-bottom: 15px;
-    width: calc(100% / 2 - 20px);
+    width: calc(100% / 2 - 20px); 
 }
 
 form .input-box span.details {
@@ -75,6 +95,22 @@ form .input-box span.details {
     .user-details .input-box input:focus,
     .user-details .input-box input:valid {
         border-color: #f9d423;
+    }
+
+.input-box select {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+    .input-box select:hover {
+        border-color: #f9d423; 
     }
 
 form .category {
@@ -118,8 +154,8 @@ form .category {
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background: #FFD700; /* Gold color */
-        color: #000; /* Black text */
+        background: #f9d423;
+        color: #fff;
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
@@ -127,53 +163,44 @@ form .category {
     }
 
         .button-group input:hover {
-            background: #FFC107; /* Slightly lighter gold for hover effect */
-            color: #000; /* Keep text black on hover */
+            background: #fce38a;
         }
 
-
-.input-box select {
-    height: 45px;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-    border-radius: 5px;
-    padding-left: 15px;
-    border: 1px solid #ccc;
-    border-bottom-width: 2px;
-    transition: all 0.3s ease;
-}
-
-    .input-box select:hover {
-        border-color: #f9d423;
+/* Responsive styles */
+@media(max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack the image and content vertically */
+        width: 100%;
     }
 
-@media(max-width: 584px) {
-    .container {
-        max-width: 100%;
+    .left-image {
+        height: 1000px; /* Adjust height for smaller screens */
+    }
+
+    .right-content {
+        padding: 15px;
     }
 
     form .user-details .input-box {
-        margin-bottom: 20px;
-        width: 100%;
-    }
-
-    form .category {
-        width: 100%;
-    }
-
-    .content form .user-details {
-        max-height: 300px;
-        overflow-y: scroll;
-    }
-
-    .user-details::-webkit-scrollbar {
-        width: 5px;
+        width: 100%; /* Single column for smaller screens */
     }
 }
 
 @media(max-width: 459px) {
-    .container .content .category {
-        flex-direction: column;
+    .container {
+        padding: 10px;
+    }
+
+    .left-image {
+        height: 150px;
+    }
+
+    .content form .user-details {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .user-details::-webkit-scrollbar {
+        width: 5px;
     }
 }
