@@ -11,8 +11,8 @@ namespace FinalProject.Controllers
             return View();
         }
 
-        // Location page
-        public ActionResult Location()
+        // About Us page
+        public ActionResult Aboutus()
         {
             return View();
         }
@@ -26,9 +26,9 @@ namespace FinalProject.Controllers
         // Logout page (clear session)
         public ActionResult Logout()
         {
-            // Clear the session or perform other logout tasks
+            
             Session.Clear();
-            return RedirectToAction("LoginPage", "Home"); // Redirect to login page
+            return RedirectToAction("LoginPage", "Home"); 
         }
 
         // Login page

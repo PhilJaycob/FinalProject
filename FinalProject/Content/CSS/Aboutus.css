@@ -5,9 +5,3 @@
     .nav-wrapper a, .nav-wrapper ul li a {
         color: gold; /* Gold text */
     }
-
-
-#map {
-    height: 1000px; 
-    width: 100%; 
-}

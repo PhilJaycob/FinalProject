@@ -1,23 +1,22 @@
-﻿// Define the AngularJS controller "MyProjectApplicationController" and inject $scope and MyProjectApplicationService as dependencies.
-app.controller("FinalProjectController", function ($scope, FinalProjectService) {
+﻿app.controller("FinalProjectController", function ($scope, FinalProjectService) {
 
     // Initialize function to call Fetchfunc when the controller is initialized.
     $scope.initFunc = function () {
         $scope.Fetchfunc();
-    }
+    };
 
     // Function to retrieve user input data and display it in an alert box.
     $scope.getInputData = function () {
         var alertFname = $scope.Fname;
         alert("First Name:  " + alertFname + "\n" +
-            "Middle Name: " + $scope.Mname + "\n" +
             "Last Name: " + $scope.Lname + "\n" +
             "Email: " + $scope.Uemail + "\n" +
             "Address: " + $scope.Uaddress + "\n" +
             "Phone Number: " + $scope.Uphone + "\n" +
-            "Deptartment:" + $scope.UDept + "\n" +
-            "Building:" + $scope.Ubldg);
-    }
+            "Department: " + $scope.UDept + "\n" +
+            "Building: " + $scope.Ubldg + "\n" +
+            "User Type: " + $scope.Utype);
+    };
 
     // Initialize an empty array to store user credentials.
     var Usercredentials = [];
@@ -33,65 +32,66 @@ app.controller("FinalProjectController", function ($scope, FinalProjectService) 
         } else {
             Usercredentials = [];
         }
-    }
+    };
 
     // Function to add a new user credential to the array and store it in session storage.
     $scope.Arraystorage = function () {
         // Search for an existing user with the same full name in the Usercredentials array.
         var Search = Usercredentials.find(ASearch =>
             ASearch.FirstName === $scope.Fname &&
-            ASearch.MiddleName === $scope.Mname &&
             ASearch.LastName === $scope.Lname);
 
         // If no user is found, validate password strength and add new credentials.
         if (Search == undefined) {
             if (
                 ($scope.Fname && $scope.Fname.length > 64) ||
-                ($scope.Mname && $scope.Mname.length > 64) ||
-                ($scope.Lname && $scope.Lname.length > 64)) {
-                alert("Names must be 64 characters or less.")
+                ($scope.Lname && $scope.Lname.length > 64)
+            ) {
+                alert("Names must be 64 characters or less.");
                 return;
             }
 
-            var emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9_.+-]+\.[a-zA-Z0-9_.+-]+$/;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@ust\.edu\.ph$/;
 
             if (!emailPattern.test($scope.Uemail)) {
-                alert("Your email must be in a valid format.")
+                alert("Your email must end with @ust.edu.ph.");
                 return;
             }
 
+
             if ($scope.Uaddress.length > 96) {
-                alert("Your address must be 96 characters long or less.")
+                alert("Your address must be 96 characters long or less.");
                 return;
             }
 
             if ($scope.Uphone.length !== 11 || !/^\d{11}$/.test($scope.Uphone)) {
-                alert("Your phone number must be exactly 11 digits.")
+                alert("Your phone number must be exactly 11 digits.");
                 return;
             }
 
             if ($scope.Upassword.length > 7 &&
                 /[$_!#-]/.test($scope.Upassword) &&
-                /[0-9]/.test($scope.Upassword)) {
+                /[0-9]/.test($scope.Upassword)
+            ) {
 
                 // Add new user credentials to the array.
                 Usercredentials.push({
                     FirstName: $scope.Fname,
-                    MiddleName: $scope.Mname,
                     LastName: $scope.Lname,
                     Email: $scope.Uemail,
                     Password: $scope.Upassword,
                     Address: $scope.Uaddress,
                     PhoneNumber: $scope.Uphone,
-                    UserName: $scope.Fname + $scope.Lname,
+                    UserName: $scope.Uemail,
                     Department: $scope.UDept,
-                    Building: $scope.Ubldg
+                    Building: $scope.Ubldg,
+                    UserType: $scope.Utype
                 });
 
                 // Convert credentials to a JSON string and store them in session storage.
                 var Sessionstring = JSON.stringify(Usercredentials);
                 sessionStorage.setItem("Credentialinformation", Sessionstring);
-                alert("Welcome to GrowlingBidet, " + $scope.Fname + $scope.Lname + "!");
+                alert("Welcome to GrowlingBidet, " + $scope.Fname + "!");
                 window.location.href = "/Home/LoginPage";
             } else {
                 // Alert if the password does not meet the requirements.
@@ -101,12 +101,11 @@ app.controller("FinalProjectController", function ($scope, FinalProjectService) 
             // Alert if the user already exists.
             alert("User is already existing!");
         }
-    }
+    };
 
     // Function to reset all input fields to null.
     $scope.Cancelfunc = function () {
         $scope.Fname = null;
-        $scope.Mname = null;
         $scope.Lname = null;
         $scope.Uemail = null;
         $scope.Upassword = null;
@@ -114,7 +113,8 @@ app.controller("FinalProjectController", function ($scope, FinalProjectService) 
         $scope.Uphone = null;
         $scope.UDept = null;
         $scope.Ubldg = null;
-    }
+        $scope.Utype = null; // Reset User Type
+    };
 
     // Function to validate user login by checking entered credentials against stored data.
     $scope.Loginvalidation = function () {
@@ -130,5 +130,5 @@ app.controller("FinalProjectController", function ($scope, FinalProjectService) 
             alert("Login successful.");
             window.location.href = "/Home/Dashboard";
         }
-    }
+    };
 });
