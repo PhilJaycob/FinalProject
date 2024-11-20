@@ -15,7 +15,9 @@
             "Phone Number: " + $scope.Uphone + "\n" +
             "Department: " + $scope.UDept + "\n" +
             "Building: " + $scope.Ubldg + "\n" +
-            "User Type: " + $scope.Utype);
+            "User Type: " + $scope.Utype + "\n" +
+            "Number: " + $scope.Unumb
+        );
     };
 
     // Initialize an empty array to store user credentials.
@@ -85,7 +87,8 @@
                     UserName: $scope.Uemail,
                     Department: $scope.UDept,
                     Building: $scope.Ubldg,
-                    UserType: $scope.Utype
+                    UserType: $scope.Utype,
+                    Number: $scope.Unumb
                 });
 
                 // Convert credentials to a JSON string and store them in session storage.
@@ -113,7 +116,8 @@
         $scope.Uphone = null;
         $scope.UDept = null;
         $scope.Ubldg = null;
-        $scope.Utype = null; // Reset User Type
+        $scope.Utype = null;
+        $scope.Unumb = null;// Reset User Type
     };
 
     // Function to validate user login by checking entered credentials against stored data.

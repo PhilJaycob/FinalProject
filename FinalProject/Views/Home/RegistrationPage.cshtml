@@ -9,58 +9,96 @@
             <form ng-submit="Arraystorage()">
                 <div class="user-details">
                     <div class="input-box">
-                        <label class="details" for="Fname">First Name</label>
+                        <span class="details">First Name</span>
                         <input id="Fname" type="text" ng-model="Fname" required>
                     </div>
                     <div class="input-box">
-                        <label class="details" for="Lname">Last Name</label>
+                        <span class="details">Last Name</span>
                         <input id="Lname" type="text" ng-model="Lname" required>
                     </div>
                     <div class="input-box">
-                        <label class="details" for="Upassword">Password</label>
+                        <span class="details">Password</span>
                         <input id="Upassword" type="password" ng-model="Upassword" required>
                     </div>
                     <div class="input-box">
-                        <label class="details" for="Uphone">Contact Number</label>
+                        <span class="details">Contact Number</span>
                         <input id="Uphone" type="tel" ng-model="Uphone" required>
                     </div>
                     <div class="input-box">
-                        <label class="details" for="Uemail">UST Email</label>
+                        <span class="details">UST Email</span>
                         <input id="Uemail" type="email" ng-model="Uemail" required>
                     </div>
                     <div class="input-box">
-                        <label class="details" for="Uaddress">Address</label>
+                        <span class="details">Address</span>
                         <input id="Uaddress" type="text" ng-model="Uaddress" required>
                     </div>
+                    <div class="input-box">
+
+                        <span class="details">Student/Faculty Number</span>
+                        <input id="Unumb" type="tel" ng-model="Unumb" required />
+
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">User Type</span>
+                        <select id="usertype" ng-model="Utype" class="browser-default" required>
+                            <option value="" disabled selected>Choose User Type</option>
+                            <option value="Student">Student</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+
                 </div>
 
-                <div class="input-box">
-                    <label class="details" for="usertype">User Type</label>
-                    <select id="usertype" ng-model="Utype" class="browser-default" required>
-                        <option value="" disabled selected>Choose User Type</option>
-                        <option value="Student">Student</option>
-                        <option value="Staff">Staff</option>
-                        <option value="Admin">Admin</option>
-                    </select>
-                </div>
 
                 <div class="input-box">
-                    <label class="details" for="department">Department</label>
+                    <span class="details">Department</span>
                     <select id="department" ng-model="UDept" class="browser-default" required>
                         <option value="" disabled selected>Choose your department</option>
                         <option value="AMV College of Accountancy">AMV College of Accountancy</option>
                         <option value="College of Architecture">College of Architecture</option>
-                        <!-- Add other departments here -->
+                        <option value="Faculty of Arts and Letters">Faculty of Arts and Letters</option>
+                        <option value="Faculty of Civil Law">Faculty of Civil Law</option>
+                        <option value="College of Commerce and Business Administration">College of Commerce and Business Administration</option>
+                        <option value="College of Education">College of Education</option>
+                        <option value="Faculty of Engineering">Faculty of Engineering</option>
+                        <option value="College of Fine Arts and Design">College of Fine Arts and Design</option>
+                        <option value="Graduate School">Graduate School</option>
+                        <option value="Graduate School of Law">Graduate School of Law</option>
+                        <option value="College of Information and Computing Sciences">College of Information and Computing Sciences</option>
+                        <option value="Faculty of Medicine and Surgery">Faculty of Medicine and Surgery</option>
+                        <option value="Conservatory of Music">Conservatory of Music</option>
+                        <option value="College of Nursing">College of Nursing</option>
+                        <option value="Faculty of Pharmacy">Faculty of Pharmacy</option>
+                        <option value="Institute of Physical Education and Athletics">Institute of Physical Education and Athletics</option>
+                        <option value="College of Rehabilitation Sciences">College of Rehabilitation Sciences</option>
+                        <option value="College of Science">College of Science</option>
+                        <option value="College of Tourism and Hospitality Management">College of Tourism and Hospitality Management</option>
+                        <option value="Faculty of Philosophy">Faculty of Philosophy</option>
+                        <option value="Faculty of Sacred Theology">Faculty of Sacred Theology</option>
+                        <option value="Faculty of Canon Law">Faculty of Canon Law</option>
+                        <option value="Senior High School">Senior High School</option>
+                        <option value="Junior High School">Junior High School</option>
+                        <option value="Education High School">Education High School</option>
                     </select>
                 </div>
 
                 <div class="input-box">
-                    <label class="details" for="building">Building</label>
+                    <span class="details">Building</span>
                     <select id="building" ng-model="Ubldg" class="browser-default" required>
                         <option value="" disabled selected>Choose your building</option>
                         <option value="Albertus Magnus Building">Albertus Magnus Building</option>
                         <option value="Beato Angelico Building">Beato Angelico Building</option>
-                        <!-- Add other buildings here -->
+                        <option value="Blessed Pier Giorgio Frassati, O.P. Building">Blessed Pier Giorgio Frassati, O.P. Building</option>
+                        <option value="Buenaventura Garcia Paredes, O.P. Building">Buenaventura Garcia Paredes, O.P. Building</option>
+                        <option value="Central Laboratory">Central Laboratory</option>
+                        <option value="Main Building">Main Building</option>
+                        <option value="Roque Ruaño Building">Roque Ruaño Building</option>
+                        <option value="St. Martin de Porres Building">St. Martin de Porres Building</option>
+                        <option value="St. Raymund de Peñafort Building">St. Raymund de Peñafort Building</option>
+                        <option value="Thomas Aquinas Research Complex">Thomas Aquinas Research Complex</option>
+                        <option value="Central Seminary Building">Central Seminary Building</option>
                     </select>
                 </div>
 
@@ -68,8 +106,10 @@
                     <input type="submit" value="Sign Up">
                     <input type="button" value="Reset" ng-click="Cancelfunc()">
                 </div>
+
                 <p>Already have an account? <a href="/Home/LoginPage" style="color: darkgoldenrod;">Login</a></p>
             </form>
         </div>
     </div>
+
 </body>
