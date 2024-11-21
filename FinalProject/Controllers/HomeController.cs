@@ -96,8 +96,8 @@ namespace FinalProject.Controllers
             {
                 Fname = registrationData.Fname,
                 Lname = registrationData.Lname,
-                Username = "asdfgtyuiol",  // Set username to a static value
-                Password = "lkjhgfdsa"    // Set password to a static value
+                Username = "asdfgtyuiol",  
+                Password = "lkjhgfdsa"    
             };
 
             return Json(rModel, JsonRequestBehavior.AllowGet);

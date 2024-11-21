@@ -1,49 +1,53 @@
 ﻿@{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-<body class="background" style="background-image: url('../../Content/Images/Login_Background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; margin: 0; position: relative;">
+<head>
+    <link rel="stylesheet" href="~/Content/css/login.css">
+</head>
 
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+<body class="background">
 
-    <div class="valign-wrapper" style="height: 100vh; position: relative; z-index: 2;">
-        <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: auto; min-height: 80vh; width: 90%; max-width: 1200px; margin: auto;">
+    <div class="background-overlay"></div>
 
-            <div style="flex: 1; text-align: center;">
-                <img src="~/Content/Images/UST_MyBidet.png" alt="Side Image" style="max-width: auto; height:auto; border-radius: 10px;">
-            </div>
+    <div class="valign-wrapper">
 
-            <div style="flex: 1; margin-left: 20px;">
+        <div class="image-container">
+            <img src="~/Content/Images/UST_MyBidet.png" alt="Side Image">
+        </div>
+        <div class="container">
+
+            <div style="flex: 1; margin-left: 10px;">
                 <div class="row center-align">
                     <div class="col s12 m8 l6 offset-m2 offset-l3">
                         <div class="card white">
                             <div class="card-content black-text">
-                                <h5 class="center-align">Login</h5>
+                                <h5>Login</h5>
                                 <div class="row">
                                     <form class="col s12 m12 l12">
                                         <div class="row">
                                             <div class="row" ng-init="Fetchfunc()">
                                                 <div class="input-field col s12 m12 l12">
-                                                    <i class="material-icons prefix" style="color: black;">account_circle</i>
-                                                    <input id="Uname" type="text" class="validate" ng-model="Username" style="border-bottom: 2px solid black; color: black;">
-                                                    <label for="Uname" style="color: black;">Username</label>
+                                                    <i class="material-icons prefix">account_circle</i>
+                                                    <input id="Uname" type="text" class="validate" ng-model="Username">
+                                                    <label for="Uname">Username</label>
                                                 </div>
 
                                                 <div class="input-field col s12 m12 l12" style="margin-top: 10px;">
-                                                    <i class="material-icons prefix" style="color: black;">lock_outline</i>
-                                                    <input id="Upassword2" type="password" class="validate" ng-model="Upassword2" style="border-bottom: 2px solid black; color: black;">
-                                                    <label for="Upassword2" style="color: black;">Password</label>
+                                                    <i class="material-icons prefix">lock_outline</i>
+                                                    <input id="Upassword2" type="password" class="validate" ng-model="Upassword2">
+                                                    <label for="Upassword2">Password</label>
                                                 </div>
 
-                                                <div class="col s12 m12 l12" style="margin-top: 10px;">
+                                                <div class="col s12 m12 l12 button-group">
                                                     <div class="col s12 m6 l6">
-                                                        <button class="btn waves-effect waves-light col s12 m12 l12" ng-click="Loginvalidation()" style="font-size: 14px; font-weight: 500; border-radius: 20px; background-color: gold; color: black;">
+                                                        <button class="btn waves-effect waves-light gold" ng-click="Loginvalidation()">
                                                             Login
                                                             <i class="material-icons left">send</i>
                                                         </button>
                                                     </div>
 
                                                     <div class="col s12 m6 l6">
-                                                        <button class="btn waves-effect waves-light col s12 m12 l12" ng-click="Cancelfunc()" style="font-size: 14px; font-weight: 500; border-radius: 20px; background-color: black; color: gold;">
+                                                        <button class="btn waves-effect waves-light black" ng-click="Cancelfunc()">
                                                             Cancel
                                                             <i class="material-icons left">cancel</i>
                                                         </button>

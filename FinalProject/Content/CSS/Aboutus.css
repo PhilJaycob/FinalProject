@@ -1,7 +1,7 @@
 ﻿.nav-wrapper {
-    background-color: #212121; /* Dark grey background */
+    background-color: #212121; 
 }
 
     .nav-wrapper a, .nav-wrapper ul li a {
-        color: gold; /* Gold text */
+        color: gold; 
     }
