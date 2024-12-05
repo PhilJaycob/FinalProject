@@ -37,7 +37,7 @@ body.background {
     margin: auto;
 }
 .image-container img {
-    margin-right: 30px;
+    margin:auto;
     max-width: 100%;
     height: auto;
 }

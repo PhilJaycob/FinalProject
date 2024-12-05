@@ -51,6 +51,13 @@
             text-decoration: underline;
         }
 
-.btn {
-    color: #ffbf00;
+.btn-primary {
+    background-color: gold !important;
+    border-color: gold !important;
+    color: white !important;
 }
+
+    .btn-primary:hover {
+        background-color: #daa520 !important;
+        border-color: #daa520 !important;
+    }
