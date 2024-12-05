@@ -1,61 +1,116 @@
 ﻿@{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Location</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH8zm11rsRvRVcN1syP36-bPNeuFfNBqM&callback=initMap" async defer></script>
+    <style>
+        #map {
+            height: 715px;
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="@Url.Action("Dashboard", "Home")" class="brand-logo" style="display: flex; align-items: center;">
-                <img src="@Url.Content("~/Content/Images/UST_MyBidet.png")" alt="UST MyBidet Logo" style="height: 40px; margin-right: 10px;">
-                UST MyBidet
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="@Url.Action("Dashboard", "Home")">Home</a></li>
-                <li><a href="@Url.Action("Profile", "Home")">Profile</a></li>
-                <li><a href="@Url.Action("Logout", "Home")">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
+<body ng-app="FinalProject" ng-controller="FinalProjectController">
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="@Url.Action("Dashboard", "Home")" class="brand-logo" style="display: flex; align-items: center;">
+                    <img src="@Url.Content("~/Content/Images/UST_MyBidet.png")" alt="UST MyBidet Logo" style="height: 40px; margin-right: 10px;">
+                    UST MyBidet
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="@Url.Action("Dashboard", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Profile", "Home")">Profile</a></li>
+                    <li><a href="@Url.Action("Logout", "Home")">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <div class="content">
-        <!-- Map Container -->
-        <div id="map" style="height: 500px; width: 100%;"></div>
-    </div>
+    <main>
+        <div id="map"></div>
+    </main>
 
-    <script src="@Url.Content("~/Scripts/materialize.js")"></script>
-
-    <!-- Google Maps API Script -->
-    <script defer
-            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
     <script>
-        // Initialize the map
+        let map;
+
         function initMap() {
-            try {
-                // Coordinates for the location
-                const location = { lat: 40.7128, lng: -74.0060 };  // Change these coordinates to your location
+            const locations = [
+                {
+                    name: "UST Blessed Pier Giorgio Frassati Building",
+                    description: "This Building is for Senior High School and College of Communication and Computing Science",
+                    position: { lat: 14.608964933135388, lng: 120.99236791564276 }
+                },
+                {
+                    name: "Buenaventura Garcia Paredes, O.P. Building",
+                    description: "This Building is for Faculty of Arts and Letters and UST College of Tourism and Hospitality Management",
+                    position: { lat: 14.608332944050334, lng: 120.98826276891752 }
+                },
+                {
+                    name: "Quadricentennial Pavilion",
+                    description: "This Building is for Institute of Physical Education & Athletics and other Athletes",
+                    position: { lat: 14.609424270893728, lng: 120.99140024761824 }
+                },
+                {
+                    name: "Thomas Aquinas Research Complex Auditorium",
+                    description: "This Building is for conferences and lectures.",
+                    position: { lat: 14.610559233160144, lng: 120.9873562848916 }
+                },
+                {
+                    name: "UST Santísimo Rosario Parish",
+                    description: "UST Church",
+                    position: { lat: 14.60886043323613, lng: 120.98795346110415 }
+                },
+                {
+                    name: "Tan Yan Kee Student Center",
+                    description: "Org Building",
+                    position: { lat: 14.611450112337272, lng: 120.98831729253153 }
+                },
+                {
+                    name: "UST Hospital",
+                    description: "Hospital lang",
+                    position: { lat: 14.61086897651376, lng: 120.99024456868231 }
+                }
+                ,
+                {
+                    name: "UST Central Laboratory",
+                    description: "COS",
+                    position: { lat: 14.609786274117747, lng: 120.98687750219305 }
+                }
 
-                // Create the map centered on the location
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 12,
-                    center: location,
-                });
+            ];
 
-                // Add a marker
+            // Initialize map
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 17,
+                center: locations[0].position,
+            });
+
+            // Add markers and info windows
+            locations.forEach(location => {
+                const infoContent = `
+                        <div>
+                            <h3>${location.name}</h3>
+                            <p>${location.description}</p>
+                        </div>
+                    `;
+                const infoWindow = new google.maps.InfoWindow({ content: infoContent });
+
                 const marker = new google.maps.Marker({
-                    position: location,
+                    position: location.position,
                     map: map,
-                    title: "Our Location"
+                    title: location.name,
                 });
-            } catch (error) {
-                console.error("Failed to initialize the map:", error);
-            }
+
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+            });
         }
     </script>
 </body>

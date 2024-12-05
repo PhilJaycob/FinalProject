@@ -1,8 +1,13 @@
 ﻿app.controller("FinalProjectController", function ($scope, FinalProjectService) {
 
-    // Initialize function to call Fetchfunc when the controller is initialized.
+    // Initialize variables
+    var Usercredentials = [];
+    var loggedInUser = null; // Tracks the logged-in user's email.
+
+    // Initialize function to call Fetchfunc and load profile when the controller is initialized.
     $scope.initFunc = function () {
         $scope.Fetchfunc();
+        $scope.LoadProfile();
     };
 
     // Function to retrieve user input data and display it in an alert box.
@@ -20,30 +25,19 @@
         );
     };
 
-    // Initialize an empty array to store user credentials.
-    var Usercredentials = [];
-
     // Function to fetch and parse credentials from session storage.
     $scope.Fetchfunc = function () {
         var Getcredentials = sessionStorage.getItem("Credentialinformation");
-
-        // If credentials exist, parse them into the Usercredentials array, otherwise set it to an empty array.
-        if (Getcredentials) {
-            var Parsedinfo = JSON.parse(Getcredentials);
-            Usercredentials = Parsedinfo || [];
-        } else {
-            Usercredentials = [];
-        }
+        Usercredentials = Getcredentials ? JSON.parse(Getcredentials) : [];
     };
 
     // Function to add a new user credential to the array and store it in session storage.
     $scope.Arraystorage = function () {
-        // Search for an existing user with the same full name in the Usercredentials array.
         var Search = Usercredentials.find(ASearch =>
             ASearch.FirstName === $scope.Fname &&
-            ASearch.LastName === $scope.Lname);
+            ASearch.LastName === $scope.Lname
+        );
 
-        // If no user is found, validate password strength and add new credentials.
         if (Search == undefined) {
             if (
                 ($scope.Fname && $scope.Fname.length > 64) ||
@@ -60,7 +54,6 @@
                 return;
             }
 
-
             if ($scope.Uaddress.length > 96) {
                 alert("Your address must be 96 characters long or less.");
                 return;
@@ -75,8 +68,6 @@
                 /[$_!#-]/.test($scope.Upassword) &&
                 /[0-9]/.test($scope.Upassword)
             ) {
-
-                // Add new user credentials to the array.
                 Usercredentials.push({
                     FirstName: $scope.Fname,
                     LastName: $scope.Lname,
@@ -91,17 +82,14 @@
                     Number: $scope.Unumb
                 });
 
-                // Convert credentials to a JSON string and store them in session storage.
                 var Sessionstring = JSON.stringify(Usercredentials);
                 sessionStorage.setItem("Credentialinformation", Sessionstring);
                 alert("Welcome to GrowlingBidet, " + $scope.Fname + "!");
                 window.location.href = "/Home/LoginPage";
             } else {
-                // Alert if the password does not meet the requirements.
                 alert("Your password must be at least 8 characters long and include a number and a special character.");
             }
         } else {
-            // Alert if the user already exists.
             alert("User is already existing!");
         }
     };
@@ -117,22 +105,79 @@
         $scope.UDept = null;
         $scope.Ubldg = null;
         $scope.Utype = null;
-        $scope.Unumb = null;// Reset User Type
+        $scope.Unumb = null;
     };
 
     // Function to validate user login by checking entered credentials against stored data.
     $scope.Loginvalidation = function () {
         var Validate = Usercredentials.find(ASearch =>
             ASearch.UserName === $scope.Username &&
-            ASearch.Password === $scope.Upassword2);
+            ASearch.Password === $scope.Upassword2
+        );
 
-        // If no match is found, display an error message.
         if (Validate == undefined) {
             alert("The username or password you entered is incorrect. Please try again.");
         } else {
-            // If credentials are valid, redirect to the dashboard page.
+            sessionStorage.setItem("LoggedInUserEmail", Validate.Email);
             alert("Login successful.");
             window.location.href = "/Home/Dashboard";
         }
     };
+
+    // Function to load the logged-in user's profile
+    $scope.LoadProfile = function () {
+        loggedInUser = sessionStorage.getItem("LoggedInUserEmail");
+
+        if (!loggedInUser) {
+            alert("No user is logged in. Redirecting to login page.");
+            window.location.href = "/Home/LoginPage";
+            return;
+        }
+
+        var currentUser = Usercredentials.find(user => user.Email === loggedInUser);
+
+        if (!currentUser) {
+            alert("User not found. Redirecting to login page.");
+            window.location.href = "/Home/LoginPage";
+            return;
+        }
+
+        $scope.Fname = currentUser.FirstName;
+        $scope.Lname = currentUser.LastName;
+        $scope.Uemail = currentUser.Email;
+        $scope.Uaddress = currentUser.Address;
+        $scope.Uphone = currentUser.PhoneNumber;
+        $scope.UDept = currentUser.Department;
+        $scope.Ubldg = currentUser.Building;
+        $scope.Utype = currentUser.UserType;
+        $scope.Unumb = currentUser.Number;
+    };
+
+    // Function to save updates to the user's profile
+    $scope.SaveProfile = function () {
+        if (!loggedInUser) {
+            alert("No user is logged in. Cannot update profile.");
+            return;
+        }
+
+        var currentUser = Usercredentials.find(user => user.Email === loggedInUser);
+
+        if (!currentUser) {
+            alert("Error: User not found!");
+            return;
+        }
+
+        currentUser.FirstName = $scope.Fname;
+        currentUser.LastName = $scope.Lname;
+        currentUser.Address = $scope.Uaddress;
+        currentUser.PhoneNumber = $scope.Uphone;
+        currentUser.Department = $scope.UDept;
+        currentUser.Building = $scope.Ubldg;
+        currentUser.UserType = $scope.Utype;
+        currentUser.Number = $scope.Unumb;
+
+        sessionStorage.setItem("Credentialinformation", JSON.stringify(Usercredentials));
+        alert("Profile updated successfully!");
+    };
+
 });

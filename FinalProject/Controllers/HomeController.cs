@@ -12,7 +12,7 @@ namespace FinalProject.Controllers
         }
 
         // About Us page
-        public ActionResult Aboutus()
+        public ActionResult admin()
         {
             return View();
         }

@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH8zm11rsRvRVcN1syP36-bPNeuFfNBqM&callback=initMap" async defer></script>
+    <style>
+        #map {
+            height: 715px;
+            width: auto;
+        }
+    </style>
+</head>
+<body ng-app="FinalProject" ng-controller="FinalProjectController">
+
+    <main>
+        <div id="map"></div>
+    </main>
+
+    <script>
+        let map;
+        const markers = []; // Array to store multiple markers
+
+        function initMap() {
+            const initialLocation = { lat: 14.6098, lng: 120.9896 }; // Coordinates for UST, Manila
+
+            // Create the map
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16, // Zoom level to focus closer on UST
+                center: initialLocation,
+            });
+
+            // Add a listener for click events on the map
+            map.addListener("click", (event) => {
+                addMarker(event.latLng);
+            });
+        }
+
+        // Function to add a marker to the map
+        function addMarker(location) {
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: true,
+            });
+
+            // Store the marker in the markers array
+            markers.push(marker);
+
+            // Display the coordinates in the console or use as needed
+            console.log("New Pinned Location:", location.lat(), location.lng());
+
+            // Add a dragend event listener for the marker
+            marker.addListener("dragend", () => {
+                const newPosition = marker.getPosition();
+                console.log("Marker Dragged To:", newPosition.lat(), newPosition.lng());
+            });
+        }
+    </script>
+
+</body>
+</html>

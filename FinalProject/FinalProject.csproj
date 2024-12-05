@@ -144,13 +144,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CSS\Admin.css" />
     <Content Include="Content\CSS\Dashboard.css" />
-    <Content Include="Content\CSS\Aboutus.css" />
     <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\CSS\Profile.css" />
     <Content Include="Content\CSS\Registration.css" />
     <Content Include="Content\Images\Login_Background.jpg" />
     <Content Include="Content\Images\Registration_background.jpg" />
+    <Content Include="Content\Images\tiger logo.jpg" />
     <Content Include="Content\Images\Tiger_pattern.png" />
     <Content Include="Content\Images\UST_MyBidet.png" />
     <Content Include="Content\materialize.css" />
@@ -164,6 +165,7 @@
     <Content Include="Scripts\AngularJS\Controller.js" />
     <Content Include="Scripts\AngularJS\Module.js" />
     <Content Include="Scripts\AngularJS\Service.js" />
+    <Content Include="Scripts\API\gmaps.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -206,6 +208,8 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
