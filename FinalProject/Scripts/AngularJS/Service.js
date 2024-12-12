@@ -23,5 +23,13 @@
         })
         return response
     }
+    this.submitFunc = function (registrationData) {
+        var response = $http({
+            method: "post",
+            url: "/Home/Updateuser",
+            data: registrationData
+        })
+        return response;
+    }
 
 })

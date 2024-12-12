@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="~/Content/CSS/Dashboard.css" />
     <script src="~/Scripts/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 </head>
 <body ng-app="FinalProject" ng-controller="FinalProjectController">
     <div>
         @RenderBody()
-
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
-
+        
     <script src="~/Scripts/jquery-3.7.0.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularJS/Module.js"></script>

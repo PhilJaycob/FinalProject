@@ -26,9 +26,9 @@ namespace FinalProject.Controllers
         // Logout page (clear session)
         public ActionResult Logout()
         {
-            
+
             Session.Clear();
-            return RedirectToAction("LoginPage", "Home"); 
+            return RedirectToAction("LoginPage", "Home");
         }
 
         // Login page
@@ -59,10 +59,10 @@ namespace FinalProject.Controllers
         {
             return View();
         }
-    
 
 
-    public string OneFunction()
+
+        public string OneFunction()
         {
             return "VALUE FROM ONE FUNCTION";
         }
@@ -96,8 +96,8 @@ namespace FinalProject.Controllers
             {
                 Fname = registrationData.Fname,
                 Lname = registrationData.Lname,
-                Username = "asdfgtyuiol",  
-                Password = "lkjhgfdsa"    
+                Username = "asdfgtyuiol",
+                Password = "lkjhgfdsa"
             };
 
             return Json(rModel, JsonRequestBehavior.AllowGet);
