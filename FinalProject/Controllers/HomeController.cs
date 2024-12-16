@@ -145,8 +145,7 @@ namespace FinalProject.Controllers
         {
             using (var db = new RegistrationContext())
             {
-                var userID = db.usertbl.
-                    Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
+                var userID = db.usertbl. Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
                     .FirstOrDefault();
                 if (    userID == null)
                 {

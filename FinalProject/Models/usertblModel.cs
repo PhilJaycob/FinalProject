@@ -12,6 +12,8 @@ namespace FinalProject.Models
         public string fName { get; set; }
         public string lName { get; set; }
         public string Address { get; set; }
+        public DateTime createAt { get; set; }
+
         public DateTime updateAt { get; set; }
     }
 }
