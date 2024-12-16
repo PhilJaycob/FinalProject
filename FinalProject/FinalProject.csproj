@@ -151,13 +151,15 @@
     </Compile>
     <Compile Include="Models\depttblModel.cs" />
     <Compile Include="Models\entityTypeConfiguration.cs" />
-    <Compile Include="Models\FacultytblMap.cs" />
-    <Compile Include="Models\facultytblModel.cs" />
+    <Compile Include="Models\loctblMap.cs" />
+    <Compile Include="Models\loctblModel.cs" />
     <Compile Include="Models\RegistrationContext.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
-    <Compile Include="Models\studentstblModel.cs" />
-    <Compile Include="Models\studentstblMap.cs" />
+    <Compile Include="Models\SudentstblModel.cs" />
+    <Compile Include="Models\StudentstblMap.cs" />
     <Compile Include="Models\depttblMap.cs" />
+    <Compile Include="Models\usertblMap.cs" />
+    <Compile Include="Models\usertblModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -179,6 +179,14 @@
         sessionStorage.setItem("Credentialinformation", JSON.stringify(Usercredentials));
         alert("Profile updated successfully!");
     };
+    $scope.submitFunc = function () {
+        var userData = {
+            Fname: $scope.FirstName,
+            Lname: $scope.LastName,
+            Uaddress: $scope.Address,
+            Unumb: $scope.Number,
+        }
+    }
     $scope.loadEmpFunc = function () {
         var getData = FinalProjectService.loadEmpFunc();
         getData.then(function (ReturnedData) {

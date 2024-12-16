@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FinalProject.Models;
+using MySql.Data.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,9 +11,6 @@ namespace FinalProject.Models
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class RegistrationContext : DbContext
     {
-        internal object faculty;
-        internal object depttbl;
-
         static RegistrationContext()
         {
             Database.SetInitializer<RegistrationContext>(null);
@@ -20,16 +19,17 @@ namespace FinalProject.Models
         {
 
         }
-        public virtual DbSet<studentstblModel> studentstbl{ get; set; }
-        public virtual DbSet<FacultytblModel> facultytbl { get; set; }
-        public virtual DbSet<depttblModel> Depttbl { get; set; }
+        public virtual DbSet<usertblModel> usertbl { get; set; }
+  
+
+        public virtual DbSet<depttblModel> depttbl { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new FacultytblMap());
-            modelBuilder.Configurations.Add(new studentstblMap());
+            modelBuilder.Configurations.Add(new usertblMap());
+            modelBuilder.Configurations.Add(new depttblMap());
+          
         }
-
-        internal void SaveChanges() => throw new NotImplementedException();
     }
 }

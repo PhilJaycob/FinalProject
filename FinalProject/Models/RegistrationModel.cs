@@ -7,18 +7,14 @@ namespace FinalProject.Models
 {
     public class Registration
     {
-        public Registration(string fName, string lName, string add, string userID)
-        {
-            FName = fName;
-            LName = lName;
-            Uaddress = add;
-            Unumb = userID;
-        }
+
 
         public string FName { get; set; }
         public string LName { get; set; }
-        public string Uaddress { get; set; }
-        public string Unumb { get; set; }
+        public string Address { get; set; }
+        public string numbs{ get; set; }
+        public int deptpartment { get; set; }
+        public int userID { get; set; }
 
     }
 }

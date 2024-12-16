@@ -6,29 +6,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Location</title>
+    <title>Admin Dashboard</title>
+
+    <!-- Google Maps API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH8zm11rsRvRVcN1syP36-bPNeuFfNBqM&callback=initMap" async defer></script>
+
+    <!-- AngularJS and Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/angular-chart.js@1.1.1/dist/angular-chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/angular-chart.js/dist/angular-chart.min.css">
+
+
 </head>
 <body ng-app="FinalProject" ng-controller="FinalProjectController">
 
     <div class="col s12 m12 l12">
+        <h2>Admin Dashboard</h2>
+
+        <!-- Data Table -->
         <table id="myTable" class="display">
             <thead>
                 <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <!--<th>Department</th> -->
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="userData in userData">
-                    <td>{{userData.eData.fName}}</td>s
+                    <td>{{userData.eData.fName}}</td>
                     <td>{{userData.eData.lName}}</td>
-                    <!--<td>{{userData.dData.deptName}}</td>-->
                 </tr>
             </tbody>
         </table>
+
+        <!-- Charts Section -->
+        <div class="chart-container">
+            <h3>Users by Department</h3>
+            <canvas id="barChart" class="chart chart-bar"
+                    chart-data="barData"
+                    chart-labels="barLabels"
+                    chart-series="barSeries"
+                    chart-options="barOptions">
+            </canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3>Monthly User Activity</h3>
+            <canvas id="lineChart" class="chart chart-line"
+                    chart-data="lineData"
+                    chart-labels="lineLabels"
+                    chart-series="lineSeries"
+                    chart-options="lineOptions">
+            </canvas>
+        </div>
     </div>
+
+    <script src="path/to/controller.js"></script>
 </body>
 </html>

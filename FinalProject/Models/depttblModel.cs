@@ -7,6 +7,6 @@ namespace FinalProject.Models
 {
     public class depttblModel
     {
-        internal object deptID;
+        public int deptID { get; set; }
     }
 }
