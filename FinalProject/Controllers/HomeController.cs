@@ -88,8 +88,8 @@ namespace FinalProject.Controllers
         // For example:
         public class RegistrationData
         {
-            public string Fname { get; set; }
-            public string Lname { get; set; }
+            public string fName { get; set; }
+            public string lName { get; set; }
             public string Address { get; set; }
             public string UserID {  get; set; }
 
@@ -102,8 +102,8 @@ namespace FinalProject.Controllers
             // Validate or manipulate the data here
             var rModel = new
             {
-                Fname = registrationData.Fname,
-                Lname = registrationData.Lname,
+                Fname = registrationData.fName,
+                Lname = registrationData.lName,
                 Address = registrationData.Address,
                 UserID = registrationData.UserID,
                 deptID = 1,

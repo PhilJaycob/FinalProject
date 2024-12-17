@@ -181,14 +181,18 @@
     };
     $scope.submitFunc = function () {
         var userData = {
-            Fname: $scope.FirstName,
-            Lname: $scope.LastName,
-            Uaddress: $scope.Address,
-            Unumb: $scope.Number,
+            Fname: $scope.fName,
+            Lname: $scope.lName,
+            Unumb: $scope.userID,
+            Uaddress: $scope.Address
         }
-    }
-    $scope.loadEmpFunc = function () {
-        var getData = FinalProjectService.loadEmpFunc();
+        var getData = RegistrationApplicationService.submitFunc(userData);
+        getData.then(function (ReturnedData) {
+
+        });
+    };
+    $scope.loaduserFunc = function () {
+        var getData = FinalProjectService.loaduserFunc();
         getData.then(function (ReturnedData) {
             $scope.employeesData = ReturnedData.data;
             $(document).ready(function () {

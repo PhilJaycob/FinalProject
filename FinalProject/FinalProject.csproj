@@ -155,8 +155,6 @@
     <Compile Include="Models\loctblModel.cs" />
     <Compile Include="Models\RegistrationContext.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
-    <Compile Include="Models\SudentstblModel.cs" />
-    <Compile Include="Models\StudentstblMap.cs" />
     <Compile Include="Models\depttblMap.cs" />
     <Compile Include="Models\usertblMap.cs" />
     <Compile Include="Models\usertblModel.cs" />
