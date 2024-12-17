@@ -1,14 +1,15 @@
-﻿namespace FinalProject.Controllers
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+namespace FinalProject.Controllers
 {
-    public class RegistartionModel
+    public class registrationController
     {
-        public object Fname { get;  set; }
+        public string Fname { get;  set; }
         public string Lname { get;  set; }
-        public string Address { get;  set; }
-        public object numbs { get;  set; }
-        public object deptartment { get; set; }
+        public string Uaddress { get;  set; }
+        public string Utype { get; set; }
 
-        /*  public string Username { get; internal set; }
-          public string Password { get; internal set; }*/
+        public int Unumb { get;  set; }
+
     }
 }

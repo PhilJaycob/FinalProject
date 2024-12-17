@@ -11,8 +11,8 @@ namespace FinalProject.Models
 
         public string FName { get; set; }
         public string LName { get; set; }
-        public string Address { get; set; }
-        public string numbs{ get; set; }
+        public string uaddress { get; set; }
+        public string unumbs{ get; set; }
         public int deptpartment { get; set; }
         public int userID { get; set; }
 

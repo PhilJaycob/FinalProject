@@ -5,6 +5,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static FinalProject.Controllers.HomeController;
 
 namespace FinalProject.Controllers
 {
@@ -42,24 +43,6 @@ namespace FinalProject.Controllers
             return View();
         }
 
-        // Other actions
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
-        }
-
         public ActionResult RegistrationPage()
         {
             return View();
@@ -67,109 +50,60 @@ namespace FinalProject.Controllers
 
 
 
-        public string OneFunction()
-        {
-            return "VALUE FROM ONE FUNCTION";
-        }
+        /* public JsonResult TreeFunction(RegistrationData registrationData)
+         {
+             // Validate or manipulate the data here
+             var rModel = new
+             {
+                 Fname = registrationData.fName,
+                 Lname = registrationData.lName,
+                 Address = registrationData.uaddress,
+                 UserID = registrationData.unumb,
+                 userType = registrationData.Utype,
+                 deptID = 1,
+                 createAt = DateTime.Now,
+                 updateAt = DateTime.Now
 
-        public int TwoFunction(string FName, string LName)
-        {
-            if (FName.ToLower().Equals("Amado") && LName.ToLower().Equals("Sapit"))
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
+             };
 
-        // Assuming 'registrationData' is a model, define it accordingly.
-        // For example:
-        public class RegistrationData
-        {
-            public string fName { get; set; }
-            public string lName { get; set; }
-            public string Address { get; set; }
-            public string UserID {  get; set; }
+             return Json(rModel, JsonRequestBehavior.AllowGet);
+         }
 
-           /* public string Username { get; set; }
-            public string Password { get; set; } */
-        }
 
-        public JsonResult TreeFunction(RegistrationData registrationData)
-        {
-            // Validate or manipulate the data here
-            var rModel = new
-            {
-                Fname = registrationData.fName,
-                Lname = registrationData.lName,
-                Address = registrationData.Address,
-                UserID = registrationData.UserID,
-                deptID = 1,
-                createAt = DateTime.Now,
-                updateAt = DateTime.Now
-                /*Username = "asdfgtyuiol",
-                Password = "lkjhgfdsa"*/
-            };
 
-            return Json(rModel, JsonRequestBehavior.AllowGet);
-        }
-        public void AddUser(RegistartionModel registrationData)
+         public JsonResult LoadUser()
+         {
+             using (var db = new RegistrationContext())
+             {
+                 var userData = (from eData in db.usertbl
+                                 join dData in db.depttbl on eData.UserID equals dData.deptID
+                                select new { eData, dData }).ToList();
+
+                 return Json(userData, JsonRequestBehavior.AllowGet);
+             }
+         }
+     }
+        */
+
+        public void AddUser(registrationController registrationData)
         {
             using (var db = new RegistrationContext())
             {
-
-                var number = Convert.ToInt32(registrationData.numbs);
-                var deptartment = Convert.ToInt32((registrationData.deptartment));
-                var userData= new usertblModel()
-             
+                var userData = new usertblModel()
                 {
+                    userID = registrationData.Unumb,
                     fName = registrationData.Fname.ToString(),
                     lName = registrationData.Lname.ToString(),
-                    Address = registrationData.Address.ToString(),
-                    userID = 1,
-                    deptID = 1,
-                    /*postID = 1,
-                    statID = 1,
+                    Address = registrationData.Uaddress.ToString(),
+                    userType = registrationData.Utype.ToString(),
                     createAt = DateTime.Now,
-                    updateAt = DateTime.Now*/
+                    updateAt = DateTime.Now
                 };
 
                 db.usertbl.Add(userData);
                 db.SaveChanges();
             }
-        }
 
-        public void UpdateUser(RegistartionModel registrationData)
-        {
-            using (var db = new RegistrationContext())
-            {
-                var userID = db.usertbl. Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
-                    .FirstOrDefault();
-                if (    userID == null)
-                {
-                    AddUser(registrationData);
-                }
-                else
-                {
-                    userID.updateAt = DateTime.Now;
-                    db.usertbl.AddOrUpdate((usertblModel)userID);
-                    db.SaveChanges();
-                }
-            }
-        }
-
-        public JsonResult LoadUser()
-        {
-            using (var db = new RegistrationContext())
-            {
-                var userData = (from eData in db.usertbl
-                                join dData in db.depttbl on eData.deptID equals dData.deptID
-                               select new { eData, dData }).ToList();
-                        
-                return Json(userData, JsonRequestBehavior.AllowGet);
-            }
         }
     }
-}   
+}

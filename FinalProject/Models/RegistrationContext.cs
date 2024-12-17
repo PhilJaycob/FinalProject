@@ -20,8 +20,6 @@ namespace FinalProject.Models
 
         }
         public virtual DbSet<usertblModel> usertbl { get; set; }
-  
-
         public virtual DbSet<depttblModel> depttbl { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -31,5 +29,7 @@ namespace FinalProject.Models
             modelBuilder.Configurations.Add(new depttblMap());
           
         }
+
+        
     }
 }
