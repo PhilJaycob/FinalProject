@@ -91,7 +91,7 @@ namespace FinalProject.Controllers
         {
             using (var db = new RegistrationContext())
             {
-                usertblModel userData = new usertblModel()
+                    usertblModel userData = new usertblModel()
                 {
                     userID = registrationData.Unumb,
                     fName = registrationData.Fname.ToString(),
