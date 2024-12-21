@@ -2,12 +2,12 @@
 
 
     // Initialize function to call Fetchfunc and load profile when the controller is initialized.
-    /*
+    
     $scope.initFunc = function () {
         $scope.submitFunc();
         $scope.Fetchfunc();
         $scope.LoadProfile();
-    };*/
+    };
 
 
    
@@ -75,7 +75,7 @@
     }; */
 
     // Function to reset all input fields to null.
-  /*  $scope.Cancelfunc = function () {
+   $scope.Cancelfunc = function () {
         $scope.Fname = null;
         $scope.Lname = null;
         $scope.Uemail = null;
@@ -87,10 +87,10 @@
         $scope.Utype = null;
         $scope.Unumb = null;
     };
-    */
+    
 
     // Function to validate user login by checking entered credentials against stored data.
-    /*
+    
     $scope.Loginvalidation = function () {
         var Validate = Usercredentials.find(ASearch =>
             ASearch.UserName === $scope.Username &&
@@ -134,11 +134,11 @@
         $scope.Utype = currentUser.UserType;
         $scope.Unumb = currentUser.Number;
     };
-    */
+    
 
     // Function to save updates to the user's profile
 
-   /* $scope.SaveProfile = function () {
+    $scope.SaveProfile = function () {
         if (!loggedInUser) {
             alert("No user is logged in. Cannot update profile.");
             return;
@@ -162,19 +162,31 @@
 
         sessionStorage.setItem("Credentialinformation", JSON.stringify(Usercredentials));
         alert("Profile updated successfully!");
-    };*/
+    };
     $scope.submitFunc = function () {
         var userData = {
-            Fname: $scope.fName,
+            Fname: $scope.Fname,
             Lname: $scope.lName,
             Unumb: $scope.userID,
             Uaddress: $scope.Address
         }
-        var getData = RegistrationApplicationService.submitFunc(userData);
+
+        if (userData) {
+            alert(JSON.stringify(userData));
+        } else {
+            alert("No item found");
+        }
+        var getData = FinalProjectService.submitFunc(userData);
         getData.then(function (ReturnedData) {
 
         });
     };
+
+
+    $scope.testAlert = function () {
+        console.log("test")
+    };  
+
    /* $scope.loaduserFunc = function () {
         var getData = FinalProjectService.loaduserFunc();
         getData.then(function (ReturnedData) {

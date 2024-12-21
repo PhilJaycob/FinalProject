@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_RegistrationLayout.cshtml";
 }
-<body class="background" ng-app="FinalProject" ng-controller="FinalProjectController">
 
     <div class="container">
         <div class="left-image">
@@ -107,13 +106,15 @@
                         </select>
                     </div>
 
-                    <button class="button-group" ng-click="submitFunc()">Submit</button>
-
-                    
+                    <div class="button-group">
+                        <input type="submit" value="Sign Up">
+                        <input type="button" value="Reset" ng-click="Cancelfunc()">
+                    </div>
 
                     <p>Already have an account? <a href="/Home/LoginPage" style="color: goldenrod;">Login</a></p>
                 </form>
+
+                
             </div>
         </div>
     </div>
-</body>

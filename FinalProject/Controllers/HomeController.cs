@@ -4,6 +4,7 @@ using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using static FinalProject.Controllers.HomeController;
 
@@ -50,7 +51,7 @@ namespace FinalProject.Controllers
 
 
 
-        /* public JsonResult TreeFunction(RegistrationData registrationData)
+        public JsonResult TreeFunction(registrationModel registrationData)
          {
              // Validate or manipulate the data here
              var rModel = new
@@ -68,42 +69,62 @@ namespace FinalProject.Controllers
 
              return Json(rModel, JsonRequestBehavior.AllowGet);
          }
+        
 
 
-
-         public JsonResult LoadUser()
-         {
-             using (var db = new RegistrationContext())
-             {
-                 var userData = (from eData in db.usertbl
-                                 join dData in db.depttbl on eData.UserID equals dData.deptID
-                                select new { eData, dData }).ToList();
-
-                 return Json(userData, JsonRequestBehavior.AllowGet);
-             }
-         }
-     }
-        */
-
-        public void AddUser(registrationController registrationData)
+        public JsonResult LoadUser()
         {
             using (var db = new RegistrationContext())
             {
-                var userData = new usertblModel()
-                {
-                    userID = registrationData.Unumb,
-                    fName = registrationData.Fname.ToString(),
-                    lName = registrationData.Lname.ToString(),
-                    Address = registrationData.Uaddress.ToString(),
-                    userType = registrationData.Utype.ToString(),
-                    createAt = DateTime.Now,
-                    updateAt = DateTime.Now
-                };
+                var userData = (from eData in db.usertbl
+                                join dData in db.depttbl on eData.userID equals dData.deptID
+                                select new { eData, dData }).ToList();
 
-                db.usertbl.Add(userData);
-                db.SaveChanges();
+                return Json(userData, JsonRequestBehavior.AllowGet);
             }
-
         }
+    }
+
+
+    public void AddUser(RegistrationController registrationData)
+    {
+        using (var db = new RegistrationContext())
+        {
+            var userData = new usertblModel()
+            {
+                userID = registrationData.Unumb,
+                fName = registrationData.Fname.ToString(),
+                lName = registrationData.Lname.ToString(),
+                Address = registrationData.Uaddress.ToString(),
+                userType = registrationData.Utype.ToString(),
+                createAt = DateTime.Now,
+                updateAt = DateTime.Now
+            };
+
+            db.usertbl.Add(userData);
+            db.SaveChanges();
+        }
+
+      /*  public void UpdateUser(registrationModel registrationData)
+        {
+            using (var db = new RegistrationContext())
+            {
+                var userID = db.usertbl.
+                    Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
+                    .FirstOrDefault();
+                if (userID == null)
+                {
+                    AddUser(registrationData);
+                }
+                else
+                {
+                    userID.updateAt = DateTime.Now;
+                    db.usertbl.AddOrUpdate((usertblModel)userID);
+                    db.SaveChanges();
+                }
+      
+            }
+        }
+      */
     }
 }
