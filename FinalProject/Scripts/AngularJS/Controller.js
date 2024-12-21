@@ -187,7 +187,7 @@
         console.log("test")
     };  
 
-   /* $scope.loaduserFunc = function () {
+    $scope.loaduserFunc = function () {
         var getData = FinalProjectService.loaduserFunc();
         getData.then(function (ReturnedData) {
             $scope.employeesData = ReturnedData.data;
@@ -217,5 +217,5 @@
                 }
             }
         });
-    }*/
+    }
 });

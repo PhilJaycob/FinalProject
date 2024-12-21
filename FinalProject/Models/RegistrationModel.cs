@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FinalProject.Models
 {
-    public class Registration
+    public class registration
     {
 
 
@@ -13,7 +13,7 @@ namespace FinalProject.Models
         public string LName { get; set; }
         public string uaddress { get; set; }
         public string unumbs{ get; set; }
-        public int deptpartment { get; set; }
+        public int dept { get; set; }
         public int userID { get; set; }
 
     }

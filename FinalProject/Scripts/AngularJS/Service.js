@@ -1,5 +1,13 @@
 ﻿app.service("FinalProjectService", function ($http) {
 
+    /*this.threeFunc = function (registrationData) {
+        var response = $http({
+            method: "post",
+            url: "/Home/TreeFunction",
+            data: registrationData
+        })
+        return response
+    }*/
     this.submitFunc = function (registrationData) {
         var response = $http({
             method: "post",
@@ -7,6 +15,10 @@
             data: registrationData
         })
         return response;
+    }
+
+    this.loadChartServiceFunc = function () {
+        return $http.get("/Home/LoadPieChartData");
     }
 
 })
