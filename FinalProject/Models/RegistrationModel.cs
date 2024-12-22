@@ -5,12 +5,12 @@ using System.Web;
 
 namespace FinalProject.Models
 {
-    public class registration
+    public class RegistartionModel
     {
 
 
-        public string FName { get; set; }
-        public string LName { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
         public string uaddress { get; set; }
         public string unumbs{ get; set; }
         public int dept { get; set; }

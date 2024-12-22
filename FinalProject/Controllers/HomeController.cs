@@ -1,12 +1,11 @@
 ﻿using FinalProject.Models;
-using Org.BouncyCastle.Bcpg;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
-using static FinalProject.Controllers.HomeController;
+
 
 namespace FinalProject.Controllers
 {
@@ -51,7 +50,7 @@ namespace FinalProject.Controllers
 
 
 
-        /* public JsonResult TreeFunction(RegistrationData registrationData)
+        /*public JsonResult TreeFunction(RegistrationData registrationData)
          {
              // Validate or manipulate the data here
              var rModel = new
@@ -71,7 +70,8 @@ namespace FinalProject.Controllers
          }
         */
 
-        /*
+
+
 
         public JsonResult LoadUser()
         {
@@ -84,14 +84,13 @@ namespace FinalProject.Controllers
                 return Json(userData, JsonRequestBehavior.AllowGet);
             }
         }
-    }
-        */
+    
 
-        public void AddUser(RegistrationController registrationData)
+        public void AddUser(RegistrationDTO registrationData)
         {
             using (var db = new RegistrationContext())
             {
-                    usertblModel userData = new usertblModel()
+                var userData = new usertblModel()
                 {
                     userID = registrationData.Unumb,
                     fName = registrationData.Fname.ToString(),
@@ -106,29 +105,31 @@ namespace FinalProject.Controllers
                 db.SaveChanges();
             }
 
-            /*
-           public void UpdateUser(registrationModel registrationData)
-            {
-                using (var db = new RegistrationContext())
-                {
-                    var userID = db.usertbl.
-                        Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
-                        .FirstOrDefault();
-                    if (userID == null)
-                    {
-                        AddUser(registrationData);
-                    }
-                    else
-                    {
-                        userID.updateAt = DateTime.Now;
-                        db.usertbl.AddOrUpdate((usertblModel)userID);
-                        db.SaveChanges();
-                    }
-
-                }
-            }
-            */
-
         }
+
+
+        /*
+
+        public void UpdateUser(RegistartionModel registrationData)
+                {
+                    using (var db = new RegistrationContext())
+                    {
+                        var userID = db.usertbl.
+                            Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
+                            .FirstOrDefault();
+                        if (userID == null)
+                        {
+                            AddUser(registrationData);
+                        }
+                        else
+                        {
+                            userID.updateAt = DateTime.Now;
+                            db.usertbl.AddOrUpdate((usertblModel)userID);
+                            db.SaveChanges();
+                        }
+
+                    }
+                }
+                */
     }
 }

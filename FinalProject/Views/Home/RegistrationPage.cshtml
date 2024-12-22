@@ -35,17 +35,17 @@
                         </div>
                         <div class="input-box">
                             <span class="details"><i class="fas fa-map-marker-alt" style="color: goldenrod;"></i> Address</span>
-                            <input id="address" type="text" ng-model="Uaddress" required>
+                            <input id="Uaddress" type="text" ng-model="Uaddress" required>
                         </div>
                         <div class="input-box">
                             <span class="details"><i class="fas fa-id-card" style="color: goldenrod;"></i> Student/Faculty Number</span>
-                            <input id="numb" type="tel" ng-model="Unumb" required>
+                            <input id="Unumb" type="tel" ng-model="Unumb" required>
                         </div>
 
 
                         <div class="input-box">
                             <span class="details"><i class="fas fa-user-tag" style="color: goldenrod;"></i> User Type</span>
-                            <select id="usertype" ng-model="Utype" class="browser-default" required>
+                            <select id="Utype" ng-model="Utype" class="browser-default" required>
                                 <option value="" disabled selected>Choose User Type</option>
                                 <option value="Student">Student</option>
                                 <option value="Staff">Staff</option>
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="button-group">
-                        <input type="submit" value="Sign Up">
+                        <input type="submit" value="Sign Up" ng-submit="submitFunc">
                         <input type="button" value="Reset" ng-click="Cancelfunc()">
                     </div>
 

@@ -137,7 +137,7 @@
     
 
     // Function to save updates to the user's profile
-
+/*
     $scope.SaveProfile = function () {
         if (!loggedInUser) {
             alert("No user is logged in. Cannot update profile.");
@@ -163,30 +163,33 @@
         sessionStorage.setItem("Credentialinformation", JSON.stringify(Usercredentials));
         alert("Profile updated successfully!");
     };
+    */
     $scope.submitFunc = function () {
         var userData = {
-            Fname: $scope.Fname,
-            Lname: $scope.lName,
-            Unumb: $scope.userID,
-            Uaddress: $scope.Address
-        }
+            fName: $scope.Fname || "", // Provide default value if undefined
+            Lname: $scope.lName || "", // Provide default value if undefined
+            userID: $scope.Unumb || 0, // Default to 0 if undefined
+            Address: $scope.Uaddress || "", // Default to empty string if undefined
+            UserType: $scope.Utype || "" // Add UserType if needed
+        };
 
-        if (userData) {
-            alert(JSON.stringify(userData));
-        } else {
-            alert("No item found");
-        }
         var getData = FinalProjectService.submitFunc(userData);
-        getData.then(function (ReturnedData) {
 
+        getData.then(function (response) {
+            // Handle success
+            alert("User added successfully: " + response.data);
+        }, function (error) {
+            // Handle error
+            alert("Error adding user: " + error.data);
         });
     };
+
 
 
     $scope.testAlert = function () {
         console.log("test")
     };  
-
+    /*
     $scope.loaduserFunc = function () {
         var getData = FinalProjectService.loaduserFunc();
         getData.then(function (ReturnedData) {
@@ -217,5 +220,7 @@
                 }
             }
         });
+        
     }
+    */
 });
