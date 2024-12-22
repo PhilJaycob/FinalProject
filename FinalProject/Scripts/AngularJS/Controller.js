@@ -11,8 +11,8 @@
 
 
    
-    // Function to add a new user credential to the array and store it in session storage.
-    /*$scope.Arraystorage = function () {
+    // Function to add a new user credential to the array and store it in local storage.
+    $scope.Arraystorage = function () {
         var Search = Usercredentials.find(ASearch =>
             ASearch.FirstName === $scope.Fname &&
             ASearch.LastName === $scope.Lname
@@ -62,8 +62,8 @@
                     Number: $scope.Unumb
                 });
 
-                var Sessionstring = JSON.stringify(Usercredentials);
-                sessionStorage.setItem("Credentialinformation", Sessionstring);
+                var Localstring = JSON.stringify(Usercredentials);
+                localStorage.setItem("Credentialinformation", Localtring);
                 alert("Welcome to UST MyBidet, " + $scope.Fname + "!");
                 window.location.href = "/Home/LoginPage";
             } else {
@@ -72,7 +72,7 @@
         } else {
             alert("User is already existing!");
         }
-    }; */
+    }; 
 
     // Function to reset all input fields to null.
    $scope.Cancelfunc = function () {
@@ -100,7 +100,7 @@
         if (Validate == undefined) {
             alert("The username or password you entered is incorrect. Please try again.");
         } else {
-            sessionStorage.setItem("LoggedInUserEmail", Validate.Email);
+            localStorage.setItem("LoggedInUserEmail", Validate.Email);
             alert("Login successful.");
             window.location.href = "/Home/Dashboard";
         }
@@ -108,7 +108,7 @@
 
     // Function to load the logged-in user's profile
     $scope.LoadProfile = function () {
-        loggedInUser = sessionStorage.getItem("LoggedInUserEmail");
+        loggedInUser = localStorage.getItem("LoggedInUserEmail");
 
         if (!loggedInUser) {
             alert("No user is logged in. Redirecting to login page.");
@@ -137,7 +137,7 @@
     
 
     // Function to save updates to the user's profile
-/*
+
     $scope.SaveProfile = function () {
         if (!loggedInUser) {
             alert("No user is logged in. Cannot update profile.");
@@ -160,36 +160,29 @@
         currentUser.UserType = $scope.Utype;
         currentUser.Number = $scope.Unumb;
 
-        sessionStorage.setItem("Credentialinformation", JSON.stringify(Usercredentials));
+        localStorage.setItem("Credentialinformation", JSON.stringify(Usercredentials));
         alert("Profile updated successfully!");
     };
-    */
+    
     $scope.submitFunc = function () {
         var userData = {
-            fName: $scope.Fname || "", // Provide default value if undefined
-            Lname: $scope.lName || "", // Provide default value if undefined
-            userID: $scope.Unumb || 0, // Default to 0 if undefined
-            Address: $scope.Uaddress || "", // Default to empty string if undefined
-            UserType: $scope.Utype || "" // Add UserType if needed
-        };
+            Fname: $scope.Fname,
+            Lname: $scope.lName,
+            Unumb: $scope.userID,
+            Uaddress: $scope.Address
+        }
 
         var getData = FinalProjectService.submitFunc(userData);
+        getData.then(function (ReturnedData) {
 
-        getData.then(function (response) {
-            // Handle success
-            alert("User added successfully: " + response.data);
-        }, function (error) {
-            // Handle error
-            alert("Error adding user: " + error.data);
         });
     };
-
 
 
     $scope.testAlert = function () {
         console.log("test")
     };  
-    /*
+    
     $scope.loaduserFunc = function () {
         var getData = FinalProjectService.loaduserFunc();
         getData.then(function (ReturnedData) {
@@ -222,5 +215,5 @@
         });
         
     }
-    */
+    
 });

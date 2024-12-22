@@ -75,11 +75,12 @@ namespace FinalProject.Controllers
 
         public JsonResult LoadUser()
         {
-            using (var db = new RegistrationContext())
+            using (RegistrationContext db = new RegistrationContext())
             {
                 var userData = (from eData in db.usertbl
                                 join dData in db.depttbl on eData.userID equals dData.deptID
                                 select new { eData, dData }).ToList();
+
 
                 return Json(userData, JsonRequestBehavior.AllowGet);
             }
@@ -108,7 +109,7 @@ namespace FinalProject.Controllers
         }
 
 
-        /*
+        
 
         public void UpdateUser(RegistartionModel registrationData)
                 {
@@ -130,6 +131,10 @@ namespace FinalProject.Controllers
 
                     }
                 }
-                */
+
+        private void AddUser(RegistartionModel registrationData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
