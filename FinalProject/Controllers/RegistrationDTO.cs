@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FinalProject.Controllers
+namespace FinalProject.Models
 {
     public class RegistrationDTO{
-        public string Fname { get; set; } 
-        public string Lname { get; set; }
-        public string Uaddress { get; set; }
-        public string Utype { get; set; }
-        public int Unumb { get; set; }
+        public string fName { get; set; } = string.Empty;
+        public string lName { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public string UserType { get; set; } = string.Empty;
+        public int userID { get; set; }
 
     }
 }

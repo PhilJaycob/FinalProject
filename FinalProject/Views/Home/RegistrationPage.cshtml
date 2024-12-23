@@ -23,15 +23,15 @@
                         </div>
                         <div class="input-box">
                             <span class="details"><i class="fas fa-lock" style="color: goldenrod;"></i> Password</span>
-                            <input id="password" type="password" ng-model="Upassword" required>
+                            <input id="Upass" type="password" ng-model="Upassword" required>
                         </div>
                         <div class="input-box">
                             <span class="details"><i class="fas fa-phone" style="color: goldenrod;"></i> Contact Number</span>
-                            <input id="phone" type="tel" ng-model="Uphone" required>
+                            <input id="Uphone" type="tel" ng-model="Uphone" required>
                         </div>
                         <div class="input-box">
                             <span class="details"><i class="fas fa-envelope" style="color: goldenrod;"></i> UST Email</span>
-                            <input id="email" type="email" ng-model="Uemail" required>
+                            <input id="Uemail" type="email" ng-model="Uemail" required>
                         </div>
                         <div class="input-box">
                             <span class="details"><i class="fas fa-map-marker-alt" style="color: goldenrod;"></i> Address</span>
@@ -107,11 +107,11 @@
                     </div>
 
                     <div class="button-group">
-                        <input type="submit" value="Sign Up">
+                        <input type="submit" value="Sign Up" ng-click="submitFunc()">
                         <input type="button" value="Reset" ng-click="Cancelfunc()">
                     </div>
+                    <p>Already have an account? <a href="/Home/LoginPage">Login</a></p>
 
-                    <p>Already have an account? <a href="/Home/LoginPage" style="color: goldenrod;">Login</a></p>
                 </form>
 
                 

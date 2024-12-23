@@ -9,6 +9,7 @@ namespace FinalProject.Models
     {
         public int locID { get; set; }
         public string LocName { get; set; }
+
         public string isActive { get; set; }
         public DateTime createAt { get; set; }
         public DateTime updateAt { get; set; }

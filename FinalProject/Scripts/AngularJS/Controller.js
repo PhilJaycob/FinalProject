@@ -12,7 +12,7 @@
 
    
     // Function to add a new user credential to the array and store it in local storage.
-    $scope.Arraystorage = function () {
+    $scope.localStorage = function () {
         var Search = Usercredentials.find(ASearch =>
             ASearch.FirstName === $scope.Fname &&
             ASearch.LastName === $scope.Lname
@@ -166,15 +166,19 @@
     
     $scope.submitFunc = function () {
         var userData = {
-            Fname: $scope.Fname,
-            Lname: $scope.lName,
-            Unumb: $scope.userID,
-            Uaddress: $scope.Address
-        }
+            fName: $scope.Fname,
+            lName: $scope.Lname,
+            userID: $scope.Unumb,
+            Address: $scope.Uaddress,
+            UserType: $scope.Utype,
+           // Dept: $scope.UDept
+        };
 
-        var getData = FinalProjectService.submitFunc(userData);
+        var getData = FinalProjectService.submitFunc(userData)
         getData.then(function (ReturnedData) {
-
+            console.log("User submitted successfully.");
+        }).catch(function (error) {
+            console.error("Error submitting user: ", error);
         });
     };
 

@@ -81,11 +81,9 @@ namespace FinalProject.Controllers
                                 join dData in db.depttbl on eData.userID equals dData.deptID
                                 select new { eData, dData }).ToList();
 
-
                 return Json(userData, JsonRequestBehavior.AllowGet);
             }
         }
-    
 
         public void AddUser(RegistrationDTO registrationData)
         {
@@ -93,11 +91,12 @@ namespace FinalProject.Controllers
             {
                 var userData = new usertblModel()
                 {
-                    userID = registrationData.Unumb,
-                    fName = registrationData.Fname.ToString(),
-                    lName = registrationData.Lname.ToString(),
-                    Address = registrationData.Uaddress.ToString(),
-                    userType = registrationData.Utype.ToString(),
+                    userID = registrationData.userID,
+                    fName = registrationData.fName.ToString(),
+                    lName = registrationData.lName.ToString(),
+                    Address = registrationData.Address.ToString(),
+                    userType = registrationData.UserType.ToString(),
+
                     createAt = DateTime.Now,
                     updateAt = DateTime.Now
                 };
@@ -105,36 +104,34 @@ namespace FinalProject.Controllers
                 db.usertbl.Add(userData);
                 db.SaveChanges();
             }
-
         }
 
-
-        
-
-        public void UpdateUser(RegistartionModel registrationData)
-                {
-                    using (var db = new RegistrationContext())
-                    {
-                        var userID = db.usertbl.
-                            Where(x => x.fName.Equals(registrationData.Fname.ToString()) && x.lName.Equals(registrationData.Lname.ToString()))
-                            .FirstOrDefault();
-                        if (userID == null)
-                        {
-                            AddUser(registrationData);
-                        }
-                        else
-                        {
-                            userID.updateAt = DateTime.Now;
-                            db.usertbl.AddOrUpdate((usertblModel)userID);
-                            db.SaveChanges();
-                        }
-
-                    }
-                }
-
-        private void AddUser(RegistartionModel registrationData)
+        /*
+        public void UpdateUser(RegistrationDTO registrationData)
         {
-            throw new NotImplementedException();
+            using (var db = new RegistrationContext())
+            {
+                var existingUser = db.usertbl
+                    .FirstOrDefault(x => x.userID == registrationData.Unumb);
+
+                if (existingUser == null)
+                {
+                    AddUser(registrationData);
+                }
+                else
+                {
+                    existingUser.fName = registrationData.Fname;
+                    existingUser.lName = registrationData.Lname;
+                    existingUser.Address = registrationData.Uaddress;
+                    existingUser.userType = registrationData.Utype;
+                    existingUser.updateAt = DateTime.Now;
+
+                    db.usertbl.AddOrUpdate(existingUser);
+                    db.SaveChanges();
+                }
+        
+            }
         }
+*/
     }
 }
